@@ -1,5 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: changelog/scripts/1.0 Create_wallet_table.yml
-  - include:
-      file: changelog/scripts/2.0 insert_test_wallets.sql
