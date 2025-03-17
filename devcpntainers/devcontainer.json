@@ -1,0 +1,33 @@
+{
+  "name": "Java 21 DevContainer",
+  "dockerFile": "Dockerfile",
+  "remoteUser": "vscode",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true
+    }
+  },
+
+  "containerEnv": {
+    "JAVA_HOME": "/usr/lib/jvm/java-21-openjdk",
+    "DOCKER_HOST": "tcp://dind:2375"
+  },
+
+  "postCreateCommand": [
+    "git clone https://github.com/AdrianoVisoccini/JavaCodeTest.git ${PWD}/JavaCodeTest",
+    "java -version",
+    "docker --version"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.java",
+        "vmware.vscode-boot-dev-pack"
+      ]
+    }
+  }
+}
