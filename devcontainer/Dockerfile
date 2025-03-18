@@ -7,6 +7,7 @@ RUN apt-get update && \
     git \
     maven \
     gradle \
+    docker.io \
     && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
