@@ -16,8 +16,7 @@
   },
 
   "postCreateCommand": [
-    "git clone https://github.com/AdrianoVisoccini/JavaCodeTest.git /workspace/JavaCodeTest",
-    "cd /workspace/JavaCodeTest",
+    "git clone https://github.com/AdrianoVisoccini/JavaCodeTest.git",
     "java -version",
     "docker --version"
   ],
