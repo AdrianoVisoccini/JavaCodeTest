@@ -42,10 +42,12 @@
 
   "runArgs": ["--privileged"],
 
-  "postCreateCommand": "code --install-extension vscjava.vscode-java-pack && \
-                         code --install-extension redhat.java && \
-                         code --install-extension vmware.vscode-boot-dev-pack && \
-                         code --install-extension ms-vsliveshare.vsliveshare && \
-                         code --install-extension ms-azuretools.vscode-docker && \
-                         code --install-extension devcontainers.remote-containers"
+  "postCreateCommand": [
+    "code --install-extension vscjava.vscode-java-pack",
+    "code --install-extension redhat.java",
+    "code --install-extension vmware.vscode-boot-dev-pack",
+    "code --install-extension ms-vsliveshare.vsliveshare",
+    "code --install-extension ms-azuretools.vscode-docker",
+    "code --install-extension devcontainers.remote-containers"
+  ]
 }
