@@ -12,20 +12,15 @@ RUN apt-get update && \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 
-# Use non-conflicting UID/GID (1001 instead of 1000)
-ARG USERNAME=vscode
-ARG USER_UID=1001
-ARG USER_GID=1001
+# Создание пользователя vscode без переменных
+RUN groupadd --gid 1001 vscode && \
+    useradd --uid 1001 --gid 1001 -m vscode --shell /bin/bash && \
+    echo "vscode ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode && \
+    chmod 0440 /etc/sudoers.d/vscode
 
-# Create user and group
-RUN groupadd --gid ${USER_GID} ${USERNAME} && \
-    useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} --shell /bin/bash && \
-    echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} && \
-    chmod 0440 /etc/sudoers.d/${USERNAME}
+# Переключаемся на пользователя vscode
+USER vscode
 
-# Switch to non-root user
-USER ${USERNAME}
-
-# Configure workspace with proper ownership
+# Устанавливаем правильные права на папку
 WORKDIR /workspace
-RUN sudo chown -R ${USERNAME}:${USERNAME} /workspace
+RUN sudo chown -R vscode:vscode /workspace
