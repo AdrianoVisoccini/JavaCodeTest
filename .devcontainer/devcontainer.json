@@ -1,7 +1,7 @@
 {
   "name": "Java 21 DevContainer",
   "dockerFile": "Dockerfile",
-  "remoteUser": "vscode",
+  "remoteUser": "root",
 
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
