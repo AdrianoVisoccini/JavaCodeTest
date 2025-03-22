@@ -7,6 +7,9 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",
       "moby": true
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21"
     }
   },
 
@@ -15,14 +18,7 @@
     "DOCKER_HOST": "tcp://dind:2375"
   },
 
-  "extensions": [
-    "vscjava.vscode-java-pack",
-    "redhat.java",
-    "vmware.vscode-boot-dev-pack",
-    "ms-vsliveshare.vsliveshare",
-    "ms-azuretools.vscode-docker",
-    "devcontainers.remote-containers"
-  ],
+  "extensions": [],
 
   "workspaceMount": "source=java_devcontainer,target=/workspace,type=volume",
   "workspaceFolder": "/workspace/JavaCodeTest",
@@ -40,14 +36,5 @@
     }
   ],
 
-  "runArgs": ["--privileged"],
-
-  "postCreateCommand": [
-    "code --install-extension vscjava.vscode-java-pack",
-    "code --install-extension redhat.java",
-    "code --install-extension vmware.vscode-boot-dev-pack",
-    "code --install-extension ms-vsliveshare.vsliveshare",
-    "code --install-extension ms-azuretools.vscode-docker",
-    "code --install-extension devcontainers.remote-containers"
-  ]
+  "runArgs": ["--privileged"]
 }
