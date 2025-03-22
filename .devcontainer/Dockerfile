@@ -15,15 +15,16 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 # Создание пользователя vscode
 ARG USERNAME=vscode
 ARG USER_UID=1000
-ARG USER_GID=1000  # Указываем конкретное значение, а не ссылку на переменную ARG
+ARG USER_GID=1000
 
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
+RUN groupadd --gid ${USER_GID} ${USERNAME} && \
+    useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} --shell /bin/bash && \
+    echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} && \
+    chmod 0440 /etc/sudoers.d/${USERNAME}
 
-# **ЯВНО УКАЗЫВАЕМ ПОЛЬЗОВАТЕЛЯ**
-USER vscode  
+# Переключаемся на пользователя vscode
+USER ${USERNAME}
 
-# Создание рабочей директории
+# Создание рабочей директории с нужными правами
 WORKDIR /workspace
+RUN sudo chown -R ${USERNAME}:${USERNAME} /workspace
