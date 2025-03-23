@@ -18,7 +18,14 @@
     "DOCKER_HOST": "tcp://dind:2375"
   },
 
-  "extensions": [],
+  "extensions": [
+    "vscjava.vscode-java-pack",
+    "redhat.java",
+    "vmware.vscode-boot-dev-pack",
+    "ms-vsliveshare.vsliveshare",
+    "ms-azuretools.vscode-docker",
+    "devcontainers.remote-containers"
+  ],
 
   "workspaceMount": "source=java_devcontainer,target=/workspace,type=volume",
   "workspaceFolder": "/workspace/JavaCodeTest",
